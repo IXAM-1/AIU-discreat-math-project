@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-// UNFINISHED
+import java.math.BigInteger;
+// WORKING
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +13,9 @@ public class Main {
 
         System.out.print("Please enter two prime numbers ");
         int Prime1, Prime2;
-         Prime1 = input.nextInt();
+        Prime1 = input.nextInt();
         System.out.println();
-         Prime2 = input.nextInt();
+        Prime2 = input.nextInt();
 
         while (!arePrime(Prime1, Prime2)) {
 
@@ -42,24 +43,27 @@ public class Main {
 
         //getting ascii list
 
-        ArrayList<Integer> AsciiList = getAscii(message);
-        ArrayList<Double> EncryptedList = new ArrayList<>();
-        for (Integer integer : AsciiList) {
-            EncryptedList.add( (Math.pow(integer, e) % n));
+        ArrayList<Integer> asciiList = getAscii(message);
+        ArrayList<Double> encryptedList = new ArrayList<>();
+        for (Integer ascii : asciiList) {
+            encryptedList.add((double)modPow(ascii, e, n));
         }
-        System.out.println("Encrypted message");
-        for (double ascii : EncryptedList) {
 
-            char chr = (char) ascii;
+
+        System.out.println("Encrypted message:");
+        for (double encrypted : encryptedList) {
+            char chr = (char) encrypted;
             System.out.print(chr);
         }
         System.out.println();
-        System.out.println("decrypted message");
-        for (double decrypt : EncryptedList) {
-            int p = (int) Math.pow(decrypt, d) % n;
-            char chr = (char) p;
+
+        System.out.println("Decrypted message:");
+        for (double encrypted : encryptedList) {
+            int decrypted = modPow((int) encrypted, d, n);
+            char chr = (char) decrypted;
             System.out.print(chr);
         }
+
 
 
 
@@ -114,7 +118,7 @@ public class Main {
         double d;
         int k = 0;
         while (true) {
-            d = ((prime * k) + 1) / e;
+            d = ((prime * k) + 1.0) / e;
             if (d ==  (int) d) {
                 break;
             }
@@ -122,5 +126,8 @@ public class Main {
 
         }
         return (int)d;
+    }
+    public static int modPow(int base, int exp, int modulus) {
+        return BigInteger.valueOf(base).modPow(BigInteger.valueOf(exp), BigInteger.valueOf(modulus)).intValue();
     }
 }
