@@ -31,7 +31,7 @@ public class Main {
 
         //getting coprime
 
-        System.out.println(findCoprimeWithPrime(lPrime2));
+        int e=findCoprimeWithPrime(lPrime2);
 
 
         //getting ascii list
@@ -83,5 +83,18 @@ public class Main {
             return a;
         }
         return gcd(b, a % b);
+
+    }
+    public static int get5raD(long prime, int e) {
+        double d = 0;
+        int k = 0;
+        while (true) {
+            d = ((prime * k) + 1.0) / e;
+            if (d == (int) d) {
+                break;
+            }
+            k++;
+        }
+        return (int) d;
     }
 }
