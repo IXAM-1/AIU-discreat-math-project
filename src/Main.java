@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 // UNFINISHED
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class Main {
         //getting coprime
 
         int e=findCoprimeWithPrime(lPrime2);
-
+        int d = getInverseD(lPrime2,e);
 
         //getting ascii list
 
@@ -85,8 +86,8 @@ public class Main {
         return gcd(b, a % b);
 
     }
-    public static int get5raD(long prime, int e) {
-        double d = 0;
+    public static int getInverseD(long prime, int e) {
+        double d;
         int k = 0;
         while (true) {
             d = ((prime * k) + 1.0) / e;
