@@ -11,10 +11,10 @@ public class Main {
         System.out.println();
 
         System.out.print("Please enter two prime numbers ");
-
-        int Prime1 = input.nextInt();
+        int Prime1, Prime2;
+         Prime1 = input.nextInt();
         System.out.println();
-        int Prime2 = input.nextInt();
+         Prime2 = input.nextInt();
 
         while (!arePrime(Prime1, Prime2)) {
 
@@ -23,21 +23,45 @@ public class Main {
             Prime2 = input.nextInt();
 
         }
-        System.out.println();
-        System.out.println();
-        // Generating 2 large prime numbers
 
-        long lPrime1 = (long) Prime1 * Prime2;
-        long lPrime2 = (long) (Prime1 - 1) * (Prime2 - 1);
+        System.out.println();
+        System.out.println();
+        int n =  Prime1 * Prime2;
+        int m =  (Prime1 - 1) * (Prime2 - 1);
 
         //getting coprime
 
-        int e=findCoprimeWithPrime(lPrime2);
-        int d = getInverseD(lPrime2,e);
+        int e =findCoprimeWithPrime(m);
+        int d = getInverseD(m,e);
+        System.out.println("Public keys are "+e+" and "+n);
+        // Generating 2 large prime numbers
+        System.out.println(d);
+        System.out.println(n);
+        System.out.println(e);
+
 
         //getting ascii list
 
         ArrayList<Integer> AsciiList = getAscii(message);
+        ArrayList<Double> EncryptedList = new ArrayList<>();
+        for (Integer integer : AsciiList) {
+            EncryptedList.add( (Math.pow(integer, e) % n));
+        }
+        System.out.println("Encrypted message");
+        for (double ascii : EncryptedList) {
+
+            char chr = (char) ascii;
+            System.out.print(chr);
+        }
+        System.out.println();
+        System.out.println("decrypted message");
+        for (double decrypt : EncryptedList) {
+            int p = (int) Math.pow(decrypt, d) % n;
+            char chr = (char) p;
+            System.out.print(chr);
+        }
+
+
 
 
     }
@@ -71,7 +95,7 @@ public class Main {
     }
 
     //getting coprime
-    public static int findCoprimeWithPrime(long prime) {
+    public static int findCoprimeWithPrime(int prime) {
         int n = 2; // start checking from 2
         while (gcd(n, prime) != 1) {
             n++; // increment n until gcd(n, prime) == 1
@@ -79,24 +103,24 @@ public class Main {
         return n;
     }
 
-    private static long gcd(long a, long b) {
+    public static long gcd(int a, int b) {
         if (b == 0) {
             return a;
         }
         return gcd(b, a % b);
 
     }
-    public static int getInverseD(long prime, int e) {
+    public static int getInverseD(int prime, int e) {
         double d;
         int k = 0;
         while (true) {
-            d = ((prime * k) + 1.0) / e;
-            if (d == (int) d) {
+            d = ((prime * k) + 1) / e;
+            if (d ==  (int) d) {
                 break;
             }
             k++;
 
         }
-        return (int) d;
+        return (int)d;
     }
 }
