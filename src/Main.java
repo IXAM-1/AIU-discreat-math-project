@@ -7,38 +7,41 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the message to be encrypted: ");
-        String message = input.next();
+        String message = input.nextLine();
 
         System.out.println();
 
-        System.out.print("Please enter two prime numbers ");
+        System.out.print("Please enter one large prime number ");
         int Prime1, Prime2;
         Prime1 = input.nextInt();
-        System.out.println();
+        System.out.print("Please enter another large prime number ");
         Prime2 = input.nextInt();
 
         while (!arePrime(Prime1, Prime2)) {
 
             System.out.println("please enter a correct prime number");
+            System.out.print("Please enter one large prime number ");
             Prime1 = input.nextInt();
+            System.out.print("Please enter another large prime number ");
             Prime2 = input.nextInt();
 
         }
 
         System.out.println();
         System.out.println();
+        // Generating 2 large prime numbers
         int n =  Prime1 * Prime2;
         int m =  (Prime1 - 1) * (Prime2 - 1);
 
         //getting coprime
 
         int e =findCoprimeWithPrime(m);
+        //getting inverse
+
         int d = getInverseD(m,e);
         System.out.println("Public keys are "+e+" and "+n);
-        // Generating 2 large prime numbers
-        System.out.println(d);
-        System.out.println(n);
-        System.out.println(e);
+
+
 
 
         //getting ascii list

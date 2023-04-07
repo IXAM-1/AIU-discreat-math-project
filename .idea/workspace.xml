@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3150663-41ae-4dd2-96c2-a62fe16b952a" name="Changes" comment="added  reset of functions just need to implement the encryption and decryption">
+    <list default="true" id="a3150663-41ae-4dd2-96c2-a62fe16b952a" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680789382757</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finished the rsa algorithm project">
+      <created>1680820883059</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680820883059</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +116,7 @@
     <MESSAGE value="3MLT 5RA 2bl ma 2nam :) lsa 3aiz ytsl7 wa 3aiz 2fhm eh 2l 5ra 2l 2smo find inverse dah" />
     <MESSAGE value="7lat 2l moshkla :)" />
     <MESSAGE value="added  reset of functions just need to implement the encryption and decryption" />
-    <option name="LAST_COMMIT_MESSAGE" value="added  reset of functions just need to implement the encryption and decryption" />
+    <MESSAGE value="finished the rsa algorithm project" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the rsa algorithm project" />
   </component>
 </project>
