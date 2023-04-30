@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Discreat project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Discreat_project_jar</output-path>
+    <root id="archive" name="Discreat project.jar">
+      <element id="module-output" name="Discreat project" />
+    </root>
+  </artifact>
+</component>

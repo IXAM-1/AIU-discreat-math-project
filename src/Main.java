@@ -6,29 +6,39 @@ import java.math.BigInteger;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Please enter the message to be encrypted: ");
-        String message = input.nextLine();
 
+
+        System.out.println("Please enter TWO distinct upper limits for the two primes p , q:  ");
+        int Prime1, Prime2;
+        System.out.print("Upper limit for p: ");
+        Prime1 = input.nextInt();
+        System.out.println();
+        System.out.print("Upper limit for q: ");
+        Prime2 = input.nextInt();
         System.out.println();
 
-        System.out.print("Please enter one large prime number ");
-        int Prime1, Prime2;
-        Prime1 = input.nextInt();
-        System.out.print("Please enter another large prime number ");
-        Prime2 = input.nextInt();
 
-        while (!arePrime(Prime1, Prime2)) {
 
-            System.out.println("please enter a correct prime number");
-            System.out.print("Please enter one large prime number ");
-            Prime1 = input.nextInt();
-            System.out.print("Please enter another large prime number ");
-            Prime2 = input.nextInt();
 
+        for (int i = Prime1; i > 0; i--) {
+            if (isPrime(i)){
+                Prime1=i;
+                break;
+            }
+        }
+        for (int i = Prime2; i > 0; i--) {
+            if (isPrime(i)){
+                Prime2=i;
+                break;
+            }
         }
 
-        System.out.println();
-        System.out.println();
+
+        System.out.print("Please enter the message to be encrypted: ");
+
+        String messages = input.next();
+
+
         // Generating 2 large prime numbers
         int n =  Prime1 * Prime2;
         int m =  (Prime1 - 1) * (Prime2 - 1);
@@ -39,14 +49,15 @@ public class Main {
         //getting inverse
 
         int d = getInverseD(m,e);
-        System.out.println("Public keys are "+e+" and "+n);
-
-
-
-
+        System.out.println("p= "+Prime1);
+        System.out.println("q= "+Prime2);
+        System.out.println("n= "+n);
+        System.out.println("m= "+m);
+        System.out.println("e= "+e);
+        System.out.println("d= "+d);
         //getting ascii list
 
-        ArrayList<Integer> asciiList = getAscii(message);
+        ArrayList<Integer> asciiList = getAscii(messages);
         ArrayList<Double> encryptedList = new ArrayList<>();
         for (Integer ascii : asciiList) {
             encryptedList.add((double)modPow(ascii, e, n));
@@ -70,7 +81,6 @@ public class Main {
 
 
 
-
     }
 
     //This method turns the string into a list of ascii numbers to encrypt them in another method
@@ -83,9 +93,7 @@ public class Main {
         return CharacterList;
     }
 
-    public static boolean arePrime(int n, int a) {
-        return isPrime(n) && isPrime(a);
-    }
+
 
     public static boolean isPrime(int n) {
         if (n < 2) {
